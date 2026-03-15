@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QuickSearch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────── -->
+  <header>
+    <div class="header-left">
+      <svg class="header-icon" width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2"/>
+        <path d="M15.5 15.5L20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="header-title">QuickSearch</span>
+    </div>
+    <span class="header-version">v1.0</span>
+  </header>
+
+  <!-- ── Trigger Keyword ─────────────────────────── -->
+  <section class="section">
+    <label class="label">Trigger Keyword</label>
+    <div class="keyword-row">
+      <div class="keyword-chip" id="keywordChip">@s</div>
+      <input id="keywordInput" class="input" type="text" placeholder="e.g. @s  @q  @find" maxlength="16" spellcheck="false" />
+    </div>
+    <p class="hint">After changing, also update at <strong>about:preferences#search</strong> → One-Click Search Engines.</p>
+  </section>
+
+  <hr />
+
+  <!-- ── Default Engine ─────────────────────────── -->
+  <section class="section">
+    <label class="label">Default Engine <span class="label-sub">— used when no prefix is typed</span></label>
+    <div class="engine-grid" id="engineGrid"></div>
+  </section>
+
+  <hr />
+
+  <!-- ── Engine Reference ───────────────────────── -->
+  <section class="section">
+    <label class="label">Prefix Reference</label>
+
+    <p class="ref-heading">AI Models &mdash; use <code class="code-ai">:</code></p>
+    <div class="ref-list" id="refAi"></div>
+
+    <p class="ref-heading" style="margin-top:12px">Search Engines &mdash; use <code class="code-search">!</code></p>
+    <div class="ref-list" id="refSearch"></div>
+  </section>
+
+  <hr />
+
+  <!-- ── Enabled Engines ────────────────────────── -->
+  <section class="section">
+    <label class="label">Suggestions <span class="label-sub">— toggle engines shown as hints</span></label>
+    <div class="toggle-list" id="toggleList"></div>
+  </section>
+
+  <!-- ── Save ───────────────────────────────────── -->
+  <div class="save-bar">
+    <button id="saveBtn" class="btn-save">Save</button>
+  </div>
+
+  <div class="toast" id="toast">Saved</div>
+
+  <script src="../engines.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
